@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import QuestionCard from './components/QuestionCard';
 import { QuestionSate, fetchQuizQuestions, Difficulty } from './API';
 
-type AnswerObject = {
+export type AnswerObject = {
   question: string;
   answer: string;
   correct: boolean;
@@ -18,13 +18,13 @@ const App = () => {
   const [number, setNumber] = useState(0);
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
-  const [gameOver, setGameOVer] = useState(true);
+  const [gameOver, setGameOver] = useState(true);
 
   console.log(questions)
 
   const startTrivia = async () => {
     setLoading(true);
-    setGameOVer(false);
+    setGameOver(false);
     try {
       const newQuestions = await fetchQuizQuestions(TOTAL_QUESTIONS, Difficulty.EASY);
       setQuestions(newQuestions);
@@ -53,14 +53,20 @@ const App = () => {
         correct,
         correctAnswer: questions[number].correct_answer
       };
-
+      // spread in previous answers and add new answerObject to end of array
       setUserAnswers(prev => [...prev, answerObject])
     }
 
   }
 
   const nextQuestion = () => {
-
+    // move on to the next question if not the last question
+    const nextQuestion = number + 1;
+    if (nextQuestion === TOTAL_QUESTIONS) {
+      setGameOver(true)
+    } else {
+      setNumber(nextQuestion)
+    }
   }
 
   return (
@@ -71,7 +77,7 @@ const App = () => {
           Start
         </button>
       ) : null}
-      {!gameOver ? <p className="score"> Score: </p> : null}
+      {!gameOver ? <p className="score"> Score: {score} </p> : null}
       {loading && <p>Loading Questions...</p>}
       {!loading && !gameOver && (
         <QuestionCard
