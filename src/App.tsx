@@ -39,6 +39,23 @@ const App = () => {
   }
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!gameOver) {
+      // user answer
+      const answer = e.currentTarget.value;
+      // check answer against correct answer
+      const correct = questions[number].correct_answer === answer;
+      // add score if answer is correct
+      if (correct) setScore(prev => prev + 1)
+      // save answer in the array for user answers
+      const answerObject = {
+        question: questions[number].question,
+        answer,
+        correct,
+        correctAnswer: questions[number].correct_answer
+      };
+
+      setUserAnswers(prev => [...prev, answerObject])
+    }
 
   }
 
@@ -48,7 +65,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>React Quizz</h1>
+      <h1> QuizzMe </h1>
       {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
         <button className="start" onClick={startTrivia}>
           Start
