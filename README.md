@@ -56,7 +56,7 @@ const App = () => {
 }
 ```
 
-Custom Types
+Custom Types & Enums
 
 ```javascript
 // In App.tsx
@@ -69,6 +69,12 @@ type AnswerObject = {
 }
 
 // In FetchAPI.tsx
+
+enum Difficulty {
+  EASY = "easy",
+  MEDIUM = "medium",
+  HARD = "hard",
+}
 
 type Question = {
   category: string;
