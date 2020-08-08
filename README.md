@@ -9,10 +9,12 @@ Fetching data with the `fetchQuizQuestions` function found in [FetchAPI.ts](http
 
 ```javascript
 const fetchQuizQuestions = async (amount: number, difficulty: Difficulty) => {
+
   const endpoint = `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=multiple`;
   
   // await the fetch itself and then await the conversion to json
   const data = await (await fetch(endpoint)).json();
+  
   // map through the fetched data and for each question, spread the question obj into the new array, as well as an answers property
   return data.results.map((question: Question) => ({
     ...question,
@@ -25,6 +27,9 @@ const fetchQuizQuestions = async (amount: number, difficulty: Difficulty) => {
 After fetching data it gets set to app state
 
 ```javascript
+
+import { QuestionSate, fetchQuizQuestions, Difficulty } from './FetchAPI';
+const TOTAL_QUESTIONS = 10;
 
 const App = () => {
 
