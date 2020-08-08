@@ -1,10 +1,8 @@
 # Quizme
 
-This is a quiz app built with React and Typescript
+A quiz app built with React and Typescript. Data is fetched from https://opentdb.com
 
-Fetching quiz data from [opentdb.com](https://opentdb.com/)
-
-This app fetches quiz questions with `amount` and `difficulty` parameters specified, stores the questions in an array which is set to state, and then for each question displays possible answers a user to choose from. When a user clicks a possible answer the app will show if you are correct or incorrect and updates the score as needed.
+> This app fetches quiz questions with `amount` and `difficulty` parameters specified, stores the questions in an array which is set to state, and then for each question displays possible answers a user to choose from. When a user clicks a possible answer the app will show if you are correct or incorrect and updates the score as needed.
 
 
 Fetching data with the `fetchQuizQuestions` function found in [FetchAPI.ts](https://github.com/dislersd/quizme/blob/master/src/API.ts)
