@@ -7,19 +7,19 @@ Fetching quiz data from [opentdb.com](https://opentdb.com/)
 This app fetches quiz questions with `amount` and `difficulty` parameters specified, stores the questions in an array which is set to state, and then for each question displays possible answers a user to choose from. When a user clicks a possible answer the app will show if you are correct or incorrect and updates the score as needed.
 
 
-Fetching data with the `fetchQuizQuestions` function found in [API.ts](https://github.com/dislersd/quizme/blob/master/src/API.ts)
+Fetching data with the `fetchQuizQuestions` function found in [FetchAPI.ts](https://github.com/dislersd/quizme/blob/master/src/API.ts)
 
 ```javascript
 const fetchQuizQuestions = async (amount: number, difficulty: Difficulty) => {
   const endpoint = `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=multiple`;
+  
   // await the fetch itself and then await the conversion to json
   const data = await (await fetch(endpoint)).json();
+  // map through the fetched data and for each question, spread the question obj into the new array, as well as an answers property
   return data.results.map((question: Question) => ({
     ...question,
-    answers: shuffleArray([
-      ...question.incorrect_answers,
-      question.correct_answer,
-    ]),
+    // using helper function to shuffle the correct answer and incorrect answers which are all spread into an array
+    answers: shuffleArray([...question.incorrect_answers, question.correct_answer]),
   }));
 };
 ```
