@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import QuestionCard from './components/QuestionCard';
-import { QuestionSate, fetchQuizQuestions, Difficulty } from './API';
+import { QuestionSate, fetchQuizQuestions, Difficulty } from './FetchAPI';
 import { GlobalStyle, Wrapper } from './App.styles';
 
 export type AnswerObject = {
@@ -21,8 +21,6 @@ const App = () => {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
 
-  console.log(questions)
-
   const startTrivia = async () => {
     setLoading(true);
     setGameOver(false);
@@ -36,7 +34,6 @@ const App = () => {
     } catch (error) {
       console.error(error)
     }
-
   }
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
