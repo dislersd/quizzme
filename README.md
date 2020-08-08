@@ -2,6 +2,8 @@
 
 A quiz app built with React and Typescript. Data is fetched from https://opentdb.com
 
+live site: https://quizzme.netlify.app/
+
 > This app fetches quiz questions with `amount` and `difficulty` parameters specified and stores the questions in an array which is set to state. For each question the UI displays possible answers for a user to choose from. When a user clicks a possible answer the app will show if you are correct or incorrect and updates the score as needed.
 
 
