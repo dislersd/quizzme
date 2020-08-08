@@ -1,4 +1,4 @@
-# Quizme
+# Quizzme
 
 A quiz app built with React and Typescript. Data is fetched from https://opentdb.com
 
