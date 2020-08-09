@@ -7,7 +7,7 @@ This app fetches questions from a quiz API and stores the questions in React sta
 
 <hr>
 
-Fetching data with the `fetchQuizQuestions` function found in the [FetchAPI.ts](https://github.com/dislersd/quizme/blob/master/src/API.ts) file
+Fetching data with the `fetchQuizQuestions` function found in the [FetchAPI.ts](https://github.com/dislersd/quizzme/blob/master/src/FetchAPI.ts) file
 
 ```javascript
 // FetchAPI.ts
