@@ -1,15 +1,17 @@
 # QuizzMe
+Live site: https://quizzme.netlify.app/
 
 A quiz app built with React and Typescript. Data is fetched from https://opentdb.com
 
-live site: https://quizzme.netlify.app/
+This app fetches questions from a quiz API and stores the questions in React state. For each question a user is presented possible answers to choose from. When a user clicks a possible answer the app will show if you are correct or incorrect and updates the score as needed.
 
-> This app fetches quiz questions with `amount` and `difficulty` parameters specified and stores the questions in an array which is set to state. For each question the UI displays possible answers for a user to choose from. When a user clicks a possible answer the app will show if you are correct or incorrect and updates the score as needed.
+<hr>
 
-
-Fetching data with the `fetchQuizQuestions` function found in [FetchAPI.ts](https://github.com/dislersd/quizme/blob/master/src/API.ts)
+Fetching data with the `fetchQuizQuestions` function found in the [FetchAPI.ts](https://github.com/dislersd/quizme/blob/master/src/API.ts) file
 
 ```javascript
+// FetchAPI.ts
+
 const fetchQuizQuestions = async (amount: number, difficulty: Difficulty) => {
 
   const endpoint = `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=multiple`;
@@ -29,6 +31,7 @@ const fetchQuizQuestions = async (amount: number, difficulty: Difficulty) => {
 After fetching data it gets set to app state
 
 ```javascript
+// App.tsx
 
 import { QuestionSate, fetchQuizQuestions, Difficulty } from './FetchAPI';
 const TOTAL_QUESTIONS = 10;
